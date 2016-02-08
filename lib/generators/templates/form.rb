@@ -1,11 +1,14 @@
+
 class <%= class_name %>Form < Paramount::Model
 
   def self.model_name
     ActiveModel::Name.new(self, nil, "<%= class_name %>")
   end
 
-<% class_name.constantize.new.attributes.except(:id, :created_at, :updated_at).each do |attr, val| %>
+<% if class_mate %>
+  <% class_mate.new.attributes.except(:id, :created_at, :updated_at).each do |attr,val| %>
   attribute :<%= attr -%>
+  <% end %>
 <% end %>
 
 
