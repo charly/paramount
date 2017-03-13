@@ -33,12 +33,12 @@ module Paramount
 
     def save
       assign
-      model.save
+      model.save if valid?
     end
     alias update save
 
-    def submit
-      valid? ? persist! : false
+    def path
+      [:edit, model]
     end
 
     def persisted?
